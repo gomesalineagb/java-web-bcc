@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.btn{
+  height: 60px;
+  width: 400px;
+  font-size: 100px;
+
+}
+
+.colorBackground{
+  background-color: #555555;
+}
+.txt{
+  height: 40px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border-top-color: white;
+}
+.label{
+  font-size: 40px;
+
+}
+
+.container{
+  display: block;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 20%;
+  margin-bottom: auto;
+}

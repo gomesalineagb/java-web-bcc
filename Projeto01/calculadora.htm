@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Calculadora</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="javaScript.js"></script>
+	
+</head>
+<body id="body">
+	<div id="container" class="container" >
+		<div>
+			<label class="label">Numero 1</label>
+		</div>
+		<div>
+			<input type="text" id="txtNum1" class="txtField">
+		</div>
+		<div>
+			<label class="label">Numero 2</label>
+		</div>
+		<div>
+			<input type="text" id="txtNum2" class="txtField">
+		</div>
+		<div>
+			<input type="button" onClick="calculadora(value);" value="+" class="btnRed" id="btnSum">
+			<input type="button" onClick="calculadora(value);" value="-" class="btnBlue" id="btnSub">
+			<input type="button" onClick="calculadora(value);" value="/" class="btnYellow" id="btnDiv">
+			<input type="button" onClick="calculadora(value);" value="*" class="btnRed" id="btnMul">
+		</div>
+		<div>
+			<button class="btn" onclick="limpar();">Limpar</button>
+		</div>
+	</div>
+</body>
+
+</html>

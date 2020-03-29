@@ -1,0 +1,49 @@
+.btnRed{
+	width:100px;
+	height:40px; 
+	background-color:red;
+	
+}
+.btnYellow{
+	width:100px;
+	height:40px; 
+	background-color:yellow;
+	
+}
+.btnBlue{
+	width:100px;
+	height:40px; 
+	background-color:blue;
+	
+}
+
+.label{
+	width:400px;
+	height:100px;
+	font-size: 50px;
+}
+
+.container {
+	display: block;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center
+}
+
+.txtField{
+	width:400px;
+	height:40px; 
+	font-size: 20px;
+    
+}
+
+.btn{
+    display:block;
+    float:100px;
+    position: 100px;
+	width:200px;
+	height:50px; 
+	background-color: white;
+	font-size: 40px;
+	border-radius: 8px;
+}
