@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.text{
+	
+}
+
+.label1{
+	font-size: 80px;
+	color: red;
+	
+}
+.label2{
+	font-size: 50px;
+	color: blue;
+}
+
+.container{
+	margin: 100px;
+	
+}

@@ -2,19 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert weight and height</title>
 </head>
 <body>
-	<form action="http://localhost:8080/Projeto007/receiveData" method="get">
-	<input type="number" name="num1" ></input>
-	<input type="number" name="num2" ></input>
-	<select name="operacao">
-		<option value="+">Somar</option>
-		<option value="-">Subtrair</option>
-		<option value="*">Multiplicar</option>
-		<option value="/">Dividir</option>
-	</select>
-	<input type="submit" value="Calcular" ></input>
-	</form>
+<form action="calculaIMC" method="get">
+	Weight
+	<input type="number" id="weight" name="weight" placeholder="Please insert your Weight in Kg"/>
+	Height
+	<input type="number" id="height" name="height" placeholder="Please insert your Height in cm"/>
+	<input type="submit" value="To Calculate" />
+</form>
 </body>
 </html>
