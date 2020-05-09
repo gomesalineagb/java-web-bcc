@@ -7,25 +7,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.bo.CarroBO;
 
-public class AlugarCarro implements Logica{
-    
-    public AlugarCarro() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class ExcluirCarro implements Logica{
+	public ExcluirCarro() {
+		
+	}
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		CarroBO carroBO = new CarroBO();
 		int id = Integer.parseInt(request.getParameter("id"));
-		if(carroBO.alugarCarro(id)) {
-			request.setAttribute("erro", "Nao foi possível alugar o carro.");
-			request.setAttribute("lista", carroBO.listarCarrosDisponiveis());
-			return "TratarCarro/ListarCarrosDisponiveis.jsp";
+		
+		if(!carroBO.excluirCarro(id)) {
+			request.setAttribute("erro", "Erro, não foi possível excluir o carro!");
 		}
-
+		
 		request.setAttribute("lista", carroBO.listarCarros());
-		return "TratarCarro/ListarCarros.jsp";
+		return "TratarCarro/ListarCarrosDisponiveis.jsp";
 	}
-
 }

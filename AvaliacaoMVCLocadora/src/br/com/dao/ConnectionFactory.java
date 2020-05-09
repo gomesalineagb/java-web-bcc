@@ -10,7 +10,7 @@ public class ConnectionFactory {
 		
 		try {
 			//inicializar o driver q foi importado
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			return DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na conexao: "+e);

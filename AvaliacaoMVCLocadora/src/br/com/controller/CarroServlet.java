@@ -7,11 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.bo.CarroBO;
-
-/**
- * Servlet implementation class CarroServlet
- */
 @WebServlet("/CarroServlet")
 public class CarroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,23 +15,25 @@ public class CarroServlet extends HttpServlet {
         super();
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CarroBO carroBO = new CarroBO();
-		String modelo = request.getParameter("txtModeloVeiculo");
-		String fabricante = request.getParameter("txtFabricanteVeiculo");
-		int year = Integer.parseInt(request.getParameter("txtYearVeiculo"));
-		String cor = request.getParameter("txtColorVeiculo");
-		float valor = Float.parseFloat(request.getParameter("txtValueVeiculo"));
-		
-		String resultado = carroBO.cadastraCarro(modelo, fabricante, year,cor,valor,0);
-		
-		if (resultado == "ListCar.jsp") {
-			request.setAttribute("lista", carroBO.listarCarros());
-		}else {
-			request.setAttribute("erro", "Erro ao cadastrar carro.");
-		}
-		request.getRequestDispatcher(resultado).forward(request, response);
-		
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	String parametro = req.getParameter("logica");
+        String nomeDaClasse = "br.com.controller." + parametro;
 
+        try {
+            Class classe = Class.forName(nomeDaClasse);
+
+            Logica logica = (Logica) classe.newInstance();
+            String pagina = logica.executa(req, resp);
+
+            req.getRequestDispatcher(pagina).forward(req, resp);
+
+        } catch (Exception e) { 
+        	throw new ServletException("A lógica de negócios causou uma exceção", e);
+        }
+    }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 }

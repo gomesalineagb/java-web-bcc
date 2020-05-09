@@ -6,3 +6,11 @@ function validaUser(){
 		alert("Usuario ou senha errados.");
 	}
 }
+
+function erro(){
+	var erro = document.getElementById("erro").value;
+	if (erro != "") {
+		alert(erro);
+	}
+	alert("@@@");
+}

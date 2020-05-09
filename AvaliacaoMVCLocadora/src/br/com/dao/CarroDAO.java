@@ -20,7 +20,7 @@ public class CarroDAO {
 	}
 	
 	public boolean cadastraCarro(CarroBean carroBean) {
-		String sql = "INSERT INTO carro(modelo,fabricante,ano,cor,valor,taAlugado) values(?,?,?,?,?,?)";
+		String sql = "INSERT INTO carro (modelo,fabricante,ano,cor,valor,taAlugado) values(?,?,?,?,?,?)";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -45,8 +45,9 @@ public class CarroDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			while (rs.next()) {
-				CarroBean carroBean = new CarroBean(rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getFloat(6),rs.getInt(7));
-				carroBean.setIdCarro(rs.getInt(1));
+				CarroBean carroBean = new CarroBean(rs.getString("modelo"),rs.getString("fabricante"),
+						rs.getInt("ano"),rs.getString("cor"),rs.getFloat("valor"),rs.getInt("taAlugado"));
+				carroBean.setIdCarro(rs.getInt("idcarro"));
 				lista.add(carroBean);
 			}
 			
@@ -56,14 +57,73 @@ public class CarroDAO {
 		return lista;
 	}
 	
-	public void alugarCarro(int id) {
-		String sql = "UPDATE carro SET taAlugado = '"+1+"' where idcarro = '"+id+"'";
+	public boolean alugarCarro(int id) {
+		String sql = "UPDATE carro SET taAlugado = '"+1+"' WHERE idcarro = '"+id+"'";
 		
 		try {
 			st = conn.createStatement();
 			st.executeUpdate(sql);
+			st.close();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public boolean excluirCarro(int id) {
+		
+		String sql = "DELETE FROM carro WHERE idcarro = '"+id+"'";
+		
+		try {
+			st = conn.createStatement();
+			st.execute(sql);
+			st.close();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		
+	}
+	
+	public boolean atualizarCarro(CarroBean carroBean) {
+		String sql = "UPDATE carro SET modelo = ?,fabricante = ?,ano = ?,cor = ?,valor = ?,taAlugado = ? WHERE idcarro = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, carroBean.getModeloCarro());
+			ps.setString(2, carroBean.getFabricanteCarro());
+			ps.setInt(3, carroBean.getYearCarro());
+			ps.setString(4, carroBean.getCorCarro());
+			ps.setFloat(5, carroBean.getValorCarro());
+			ps.setInt(6, carroBean.getTaAlugado());
+			ps.setInt(7, carroBean.getIdCarro());
+			ps.execute();
+			ps.close();
+			return true;
+		} catch (Exception e) {
+			return false;		
+		}
+	
+	}
+	
+	public CarroBean buscarPorId(int id) {
+		String sql = "SELECT * FROM carro WHERE idcarro = '"+id+"'";
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
+			rs.next();
+			CarroBean carroBean = new CarroBean(rs.getString("modelo"),rs.getString("fabricante"),
+						rs.getInt("ano"),rs.getString("cor"),rs.getFloat("valor"),rs.getInt("taAlugado"));
+				carroBean.setIdCarro(rs.getInt("idcarro"));
+			rs.close();
+			st.close();
+			return carroBean;
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return null;
 	}
 }

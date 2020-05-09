@@ -45,15 +45,12 @@ public class LoginServlet extends HttpServlet {
 		UsuarioBO usuarioBo = new UsuarioBO();
 		if (usuarioBo.login(user, password)) {
 			request.setAttribute("lista", new CarroBO().listarCarros());
-			request.getRequestDispatcher("ListCar.jsp").forward(request, response);
+			request.getRequestDispatcher("TratarCarro/ListarCarros.jsp").forward(request, response);
 		}else {
 			request.setAttribute("erro", "Wrong User or Password, Please try again! ");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-			
-		
-			
-		
+
 	}
 
 }

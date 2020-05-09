@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="JavaScript/script.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
 						<input class="form-control" id="password" type="password" name="pass" placeholder="Password" required/>
 					</div>
 				</div>
-				<input type="submit" value="Sign In" onclick=validaUser(); onsubmit="validaUser()"  class="btn btn-primary center-block form-control col-sm-10"/>
+				<input type="submit" value="Sign In" onsubmit="validaUser();"  class="btn btn-primary center-block form-control col-sm-10"/>
 			</form>
 		</div>
 		 

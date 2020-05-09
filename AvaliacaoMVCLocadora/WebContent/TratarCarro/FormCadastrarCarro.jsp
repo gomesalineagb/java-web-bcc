@@ -8,12 +8,12 @@
 	<title>Cadastro de Carro</title>
 </head>
 <body>
-	<div class="container col-sm-5">
+	<div class="container col-sm-8">
 		<div class="card text-center">
 			<div class="card-body">
-				<h3>Car Register</h3>
+				<h3>Cadastrar Carro</h3>
 				<h6 class="text-danger">${erro}</h6> 
-				<form action="CarroServlet" method="post">
+				<form action="http://localhost:8080/AvaliacaoMVCLocadora/CarroServlet?logica=CadastrarCarro" method="post">
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">Fabricante:</label>
 						<div class="col-sm-8">
@@ -21,31 +21,32 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-3 text-right">Model:</label>
+						<label class="col-sm-3 text-right">Modelo:</label>
 						<div class="col-sm-8">
 							<input class="form-control" type="text" name="txtModeloVeiculo" placeholder="Modelo" required/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-3 text-right">Year:</label>
+						<label class="col-sm-3 text-right">Ano:</label>
 						<div class="col-sm-8">
 							<input class="form-control" type="number" name="txtYearVeiculo" placeholder="Year" required/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-3 text-right">Color:</label>
+						<label class="col-sm-3 text-right">Cor:</label>
 						<div class="col-sm-8">
 							<input class="form-control" type="text" name="txtColorVeiculo" placeholder="Color" required/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-3 text-right">Value:</label>
+						<label class="col-sm-3 text-right">Valor:</label>
 						<div class="col-sm-8">
 							<input class="form-control" type="number" name="txtValueVeiculo" placeholder="Value" required/>
 						</div>
 					</div>
-					<a class="btn btn-link col-sm-5" href="ListCar.jsp">Cancel</a>
+					<a class="btn btn-link col-sm-5" href="http://localhost:8080/AvaliacaoMVCLocadora/CarroServlet?logica=ListarCarro">Cancel</a>
 					<input type="submit" value="Register" class="btn btn-primary col-sm-5"/>
+					<input type="hidden" name="logica" value="CadastrarCarro">
 				</form>
 			</div>
 		</div>
