@@ -87,18 +87,14 @@ public class CarroDAO {
 		
 	}
 	
-	public boolean atualizarCarro(CarroBean carroBean) {
-		String sql = "UPDATE carro SET modelo = ?,fabricante = ?,ano = ?,cor = ?,valor = ?,taAlugado = ? WHERE idcarro = ?";
+	public boolean atualizarCarro(String cor, float valor,int id) {
+		String sql = "UPDATE carro SET cor = ?,valor = ? WHERE idcarro = ?";
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, carroBean.getModeloCarro());
-			ps.setString(2, carroBean.getFabricanteCarro());
-			ps.setInt(3, carroBean.getYearCarro());
-			ps.setString(4, carroBean.getCorCarro());
-			ps.setFloat(5, carroBean.getValorCarro());
-			ps.setInt(6, carroBean.getTaAlugado());
-			ps.setInt(7, carroBean.getIdCarro());
+			ps.setString(1, cor);
+			ps.setFloat(2, valor);
+			ps.setInt(3, id);
 			ps.execute();
 			ps.close();
 			return true;
@@ -121,6 +117,29 @@ public class CarroDAO {
 			rs.close();
 			st.close();
 			return carroBean;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public ArrayList<CarroBean> buscarPorModelo(String modelo){
+		String sql = "SELECT * FROM carro WHERE modelo LIKE '%"+modelo+"%'";
+		ArrayList<CarroBean> carros = new ArrayList<CarroBean>();
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
+			while(rs.next()) {
+				System.out.println("encontrooou");
+				CarroBean carroBean = new CarroBean(rs.getString("modelo"),rs.getString("fabricante"),
+						rs.getInt("ano"),rs.getString("cor"),rs.getFloat("valor"),rs.getInt("taAlugado"));
+				carroBean.setIdCarro(rs.getInt("idcarro"));
+				carros.add(carroBean);
+			}
+			rs.close();
+			st.close();
+			System.out.println("executou");
+			return carros;
 		} catch (Exception e) {
 			System.out.println(e);
 		}

@@ -40,7 +40,7 @@
 						<td>
 							<a href="http://localhost:8080/AvaliacaoMVCLocadora/CarroServlet?logica=AlugarCarro&id=${carro.getIdCarro()}" class="fas">&#xf274;</a>
 							<a href="http://localhost:8080/AvaliacaoMVCLocadora/CarroServlet?logica=ExcluirCarro&id=${carro.getIdCarro()}" class="close text-danger">&times;</a>
-							<a href="http://localhost:8080/AvaliacaoMVCLocadora/CarroServlet?logica=AtualizarCarro&id=${carro.getIdCarro()}" class="fas">&#xf044;</a>
+							<a href="http://localhost:8080/AvaliacaoMVCLocadora/CarroServlet?logica=AtualizarCarro&action=form&id=${carro.getIdCarro()}" class="fas">&#xf044;</a>
 						</td>
 					</tr>
 					</c:forEach>

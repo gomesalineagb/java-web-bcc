@@ -21,7 +21,7 @@ public class ExcluirCarro implements Logica{
 			request.setAttribute("erro", "Erro, não foi possível excluir o carro!");
 		}
 		
-		request.setAttribute("lista", carroBO.listarCarros());
+		request.setAttribute("lista", carroBO.listarCarrosDisponiveis());
 		return "TratarCarro/ListarCarrosDisponiveis.jsp";
 	}
 }

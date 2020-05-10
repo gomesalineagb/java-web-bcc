@@ -16,13 +16,8 @@ public class BuscarCarro implements Logica{
 
 		CarroBO carroBO = new CarroBO();
 		String modelo = request.getParameter("search");
-//		if(carroBO.alugarCarro(id)) {
-//			request.setAttribute("erro", "Nao foi possível alugar o carro.");
-//			request.setAttribute("lista", carroBO.listarCarrosDisponiveis());
-//			return "TratarCarro/ListarCarrosDisponiveis.jsp";
-//		}
 
-		request.setAttribute("lista", carroBO.listarCarros());
+		request.setAttribute("lista", carroBO.buscarPorModelo(modelo));
 		return "TratarCarro/ListarCarros.jsp";
 	}
 	

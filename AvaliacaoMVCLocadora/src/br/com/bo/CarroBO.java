@@ -49,13 +49,9 @@ public class CarroBO {
 		return false;
 	}
 	
-	public String atualizarCarro(String modeloCarro, String fabricanteCarro,int yearCarro, String cor, float valor) {
-		CarroBean carroBean = new CarroBean(modeloCarro,fabricanteCarro,yearCarro,cor,valor,0);
+	public boolean atualizarCarro(String cor, float valor,int id) {
 		
-		if (new CarroDAO().atualizarCarro(carroBean)) {
-			return "TratarCarro/ListarCarros.jsp";
-		}
-		return "TratarCarro/AtualizarCarro.jsp";
+		return new CarroDAO().atualizarCarro(cor, valor, id);
 	}
 	
 	public boolean excluirCarro(int id) {
@@ -71,6 +67,15 @@ public class CarroBO {
 		}
 		
 		return false;
+	}
+	
+	public CarroBean buscarPorId(int id) {
+		return new CarroDAO().buscarPorId(id);
+	}
+	
+	public ArrayList<CarroBean> buscarPorModelo(String modelo){
+		
+		return new CarroDAO().buscarPorModelo(modelo);		
 	}
 	
 }
